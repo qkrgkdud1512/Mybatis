@@ -14,7 +14,7 @@ public class Insert implements Interface {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("아이디를 입력하세요 : ");
+		System.out.println("아이다를 입력하세요 : ");
 		String username=sc.next();
 		System.out.println("이름을 입력하세요 : ");
 		String username1=sc.next();
