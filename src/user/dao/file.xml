@@ -9,10 +9,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="pw" column="pw"/>
 		<result property="name" column="name"/>
 	</resultMap>
-	
+	<!-- 입력,삭제등 아이디줘야함 -->
 	<insert id="getid" parameterType="user01">
 	insert into make values(#{id},#{pw},#{name});
 	</insert>
+	
+	<delete id="del" parameterType="user01">
+	delete from make where id=#{id};
+	</delete>
+	
+	<update id="upd" parameterType="user01">
+	update make set pw=#{pw} where id=#{id};
+	</update>
+	
+	<select id="sel" parameterType="user01" resultType="user01">
+	select * from make where id=#{id} and pw=#{pw};
+	</select>
+	
+	<select id="jungbok" parameterType="user01" resultType="user01">
+	select id from make where id=#{id};
+	</select>
 
 
 

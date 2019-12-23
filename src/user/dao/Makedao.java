@@ -2,6 +2,7 @@ package user.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -36,18 +37,44 @@ public class Makedao {
 	
 	public void In(Dto d) {
 		SqlSession sqlsession =factory.openSession();
-		sqlsession.insert("getid",d);
+		sqlsession.insert("getid",d); // file에서 지정한 id입력
 		sqlsession.commit();
 		sqlsession.close();
 		
 	}
-	public void De() {
+	public void De(Dto d) {
+		SqlSession sqlsession = factory.openSession();
+		sqlsession.delete("del",d);// file에서 지정한 id입력
+		sqlsession.commit();
+		sqlsession.close();
+
+	}
+	public void UP(Dto d) {
+		SqlSession sqlsession = factory.openSession();
+		sqlsession.update("upd",d);// file에서 지정한 id입력
+		sqlsession.commit();
+		sqlsession.close();
 		
 	}
-	public void UP() {
+	public Dto Se(Dto d) {
+		SqlSession sqlsession = factory.openSession();
+		Dto aa=sqlsession.selectOne("sel",d);// file에서 지정한 id입력
+		sqlsession.commit();
+		sqlsession.close();
+		return aa;
 		
 	}
-	public void Se() {
+	public int jungbok(Dto d) {
+		int i=0;
+		SqlSession sqlsession = factory.openSession();
+
+		if(sqlsession.selectOne("jungbok",d)==null) {
+			i=1;
+		}
+		
+		sqlsession.commit();
+		sqlsession.close();
+		return i;
 		
 	}
 }
